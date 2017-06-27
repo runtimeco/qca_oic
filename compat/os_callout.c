@@ -28,7 +28,8 @@
  *   @defgroup OSCallouts Event Timers (Callouts)
  *   @{
  */
-TAILQ_HEAD(, os_callout) g_callout_list;
+TAILQ_HEAD(, os_callout) g_callout_list =
+    TAILQ_HEAD_INITIALIZER(g_callout_list);
 
 /**
  * Initialize a callout.
