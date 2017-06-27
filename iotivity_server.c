@@ -195,7 +195,7 @@ register_resources(void)
     oc_resource_set_default_interface(res, OC_IF_RW);
 
     oc_resource_set_discoverable(res);
-    oc_resource_set_periodic_observable(res, 1);
+    oc_resource_set_periodic_observable(res, 2);
     oc_resource_set_request_handler(res, OC_GET, get_light);
     oc_resource_set_request_handler(res, OC_PUT, put_light);
     oc_add_resource(res);
@@ -216,7 +216,7 @@ register_resources(void)
     oc_resource_set_default_interface(res, OC_IF_R);
 
     oc_resource_set_discoverable(res);
-    oc_resource_set_periodic_observable(res, 1);
+    oc_resource_set_periodic_observable(res, 10);
     oc_resource_set_request_handler(res, OC_GET, get_temp);
     oc_add_resource(res);
 
@@ -226,7 +226,7 @@ register_resources(void)
     oc_resource_set_default_interface(res, OC_IF_R);
 
     oc_resource_set_discoverable(res);
-    oc_resource_set_periodic_observable(res, 1);
+    oc_resource_set_periodic_observable(res, 10);
     oc_resource_set_request_handler(res, OC_GET, get_humidity);
     oc_add_resource(res);
 
