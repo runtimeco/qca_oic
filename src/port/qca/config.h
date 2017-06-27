@@ -31,7 +31,7 @@ extern "C" {
 #include <os/os.h>
 #include <log/log.h>
 
-#define OS_TICKS_PER_SEC 1000 /* XXXX */
+#define OS_TICKS_PER_SEC 100 /* XXXX */
 
 /* rather than change all their source files, just translate the mynewt
  * package defines into their defines here */

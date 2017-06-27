@@ -289,6 +289,7 @@ int
 iotivity_task_start(void)
 {
     int rc;
+    qurt_time_t ticks;
 
     rc = mem_init_mbuf_pool(msys_data, &msys_mempool, &msys_mbuf_pool,
                             MSYS_MEMBLK_CNT, MSYS_MEMBLK_SIZE, "mbuf");
@@ -299,10 +300,14 @@ iotivity_task_start(void)
 
     os_eventq_init(os_eventq_dflt_get());
 
+    /*
+     * OS_TICKS_PER_SEC = 100
+     */
     qurt_timer_attr_init(&os_tmr_attr);
-    qurt_timer_attr_set_duration(&os_tmr_attr, 1);
+    ticks = qurt_timer_convert_time_to_ticks(10, QURT_TIME_MSEC);
+    qurt_timer_attr_set_duration(&os_tmr_attr, ticks);
     qurt_timer_attr_set_callback(&os_tmr_attr, iot_os_tick, NULL);
-    qurt_timer_attr_set_reload(&os_tmr_attr, 1);
+    qurt_timer_attr_set_reload(&os_tmr_attr, ticks);
     qurt_timer_attr_set_option(&os_tmr_attr, QURT_TIMER_PERIODIC);
     qurt_timer_create(&os_tmr, &os_tmr_attr);
 
